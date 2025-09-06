@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Brand;
 use App\Models\Customer;
+use App\Models\Document;
 use App\Models\Employee;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,8 +24,19 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        Customer::factory(15)->create();
-        Employee::factory(6)->create();
-        Brand::factory(10)->create();
+        $this->call([
+            CountrySeeder::class,
+            DocumentTypeSeeder::class,
+            GenderSeeder::class,
+        ]);
+
+        Customer::factory(8)->create();
+        /* Document::factory(8)->create(); */
+        /* Employee::factory(6)->create();
+        Brand::factory(10)->create(); */
+
+        $this->call([
+            DocumentSeeder::class,
+        ]);
     }
 }

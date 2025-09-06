@@ -20,9 +20,9 @@ class CustomerFactory extends Factory
             'name' => fake()->name(),
             'surnames' => fake()->words(2, true),
             'phone' => fake()->unique()->randomNumber(9, true),
-            'type_document' => fake()->randomElement(['dni', 'ruc']),
-            'document_number' => fake()->unique()->randomNumber(9, true),
             'address' => fake()->streetAddress(),
+            'gender_id' => rand(1, 2),
+            'country_id' => rand(1, 5),
         ];
     }
 }

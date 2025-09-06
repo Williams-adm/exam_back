@@ -16,9 +16,9 @@ return new class extends Migration
             $table->char('name', length: 80);
             $table->char('surnames', length: 80);
             $table->char('phone', length: 9)->unique();
-            $table->enum('type_document', ['dni', 'ruc']);
-            $table->char('document_number', length: 12)->unique();
             $table->char('address');
+            $table->foreignId('gender_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('country_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -22,7 +22,14 @@ class StoreCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|min:3|max:50',
+            'surnames' => 'required|string|min:3|max:50',
+            'phone' => 'required|integer|unique:customers,phone',
+            'address' => 'required|string|min:3',
+            'gender_id' => 'required|integer|exists:genders,id',
+            'country_id' => 'required|integer|exists:countries,id',
+            'number_doc' => 'required|integer|unique:documents,number_doc|digits_between:8,12',
+            'document_type' => 'required|integer|exists:document_types,id'
         ];
     }
 }
